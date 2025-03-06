@@ -1,7 +1,11 @@
-# CS_AIMS_Coral-Sea-Features_2024
-This repository contains scripts that were used in the development of the Coral Sea Features dataset. All the satellite image preparation used in the development is described separately in [Lawrey and Hammerton, 2022](https://doi.org/10.26274/NH77-ZW79).
+# CS_AIMS_Coral-Sea-Features_2025
+This repository contains utility scripts that were used in the development of the Coral Sea Features dataset. For full information about this dataset see: 
 
-It should be noted that this dataset is largely created manually and this these scripts represent utilities that were used to process portions of the dataset production, and can't be used to reproduce the dataset. It should also be noted that most of these scripts refer to files that were intermediate files during the production and thus will not work directly from the public files. They are provided as a form of documentation, rather than to allow rerunning of the processing from scratch.
+Lawrey, E., Bycroft, R. (2025). Coral Sea Features - Dataset collection - Coral reefs, Cays, Oceanic reef atoll platforms, and Depth contours (AIMS). [Data set]. eAtlas. https://doi.org/10.26274/pgjp-8462 
+
+All the satellite image preparation used in the development is described separately in [Lawrey and Hammerton, 2022](https://doi.org/10.26274/NH77-ZW79).
+
+It should be noted that this dataset was largely created manually and this these scripts represent utilities that were used to process portions of the dataset production, and do not full represent the full workflow associated with the dataset as much of the processing was performed in QGIS. It should also be noted that most of these scripts refer to files that were intermediate files during the production and thus will not work directly from the public files. They are provided as a form of documentation, rather than to allow a blind rerun of the processing from scratch.
 
 # Installation Guide
 
@@ -65,6 +69,4 @@ This script allocates permanent identifiers to each reef feature, based on an ap
 
 For the reef mapping base 10 (B10) was used to encode the ReefID as it was found that while higher bases lead to slightly shorter identifiers (1 to 2 characters shorter), the identifiers started to look more like a random password than an identifier that might be used for communications.
 
-
-Lawrey, E., & Hammerton, M. (2022). Coral Sea features satellite imagery and raw depth contours (Sentinel 2 and Landsat 8) 2015 – 2021 (AIMS) [Data set]. eAtlas. https://doi.org/10.26274/NH77-ZW79
 
