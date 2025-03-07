@@ -39,6 +39,10 @@ downloader.download_and_unzip(direct_download_url, 'CS_GA_Kenn-Chesterfield-Bath
 direct_download_url = 'https://files.ausseabed.gov.au/survey/Northern%20Great%20Barrier%20Reef%20Bathymetry%202020%2064m.zip'
 downloader.download_and_unzip(direct_download_url, 'CS_GA_North-GBR-Bathy')
 
+# Spinoccia, M., Brooke, B., Nichol, S., & Beaman, R. (2020). Seamounts, Canyons and Reefs of the Coral Sea bathymetry survey (FK200802/GA0365) [Dataset]. Commonwealth of Australia (Geoscience Australia). https://doi.org/10.26186/144385
+direct_download_url = 'https://files.ausseabed.gov.au/survey/Coral%20Sea%20Canyons%20and%20Reef%20Bathymetry%202020%2016m%20-%2064m.zip'
+downloader.download_and_unzip(direct_download_url, 'CS_GA_Coral-Sea-Canyons')
+
 # Beaman, R., Duncan, P., Smith, D., Rais, K., Siwabessy, P.J.W., Spinoccia, M. (2020). Visioning the Coral Sea Marine Park bathymetry survey (FK200429/GA4861). Geoscience Australia, Canberra. https://dx.doi.org/10.26186/140048
 direct_download_url = 'https://files.ausseabed.gov.au/survey/Visioning%20the%20Coral%20Sea%20Bathymetry%202020%2016m%20-%2064m.zip'
 downloader.download_and_unzip(direct_download_url, 'CS_GA_Visioning-Coral-Sea-Bathy')
