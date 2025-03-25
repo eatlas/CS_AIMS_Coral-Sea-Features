@@ -69,4 +69,9 @@ This script allocates permanent identifiers to each reef feature, based on an ap
 
 For the reef mapping base 10 (B10) was used to encode the ReefID as it was found that while higher bases lead to slightly shorter identifiers (1 to 2 characters shorter), the identifiers started to look more like a random password than an identifier that might be used for communications.
 
+## 05-cay-average-area.py
+This script calculates the average area of the cays. This is to estimate how much smaller the cays are compared with the cay region in Reefs-Cays. This uses spatial joining to work out which cays in Cays-over-time correspond to each cay in Reefs-Cays. It assigns them the matching ReefID and Area_km2. The average cay area is then calculated over each date and ReefID, then copied back to Reefs-Cays. This creates an updated version of the Reefs-Cays and Cays-over-time in working. These should be manually copied to the publication folder once they have been checked.
+
+## 06-plot-cay-region-vs-cay-area.py
+This script plots how the average cay area varies as a function of the cay stability and whether it is vegetated.  
 
