@@ -5,6 +5,8 @@
 # Each of the locations highlighted by the outputs of this code were then manually
 # reviewed and mapped over time from imagery of individual days.
 
+# Note: This is an old script and is provided primarily for reference of process. 
+
 # This script converts the CS_AIMS_Coral-Sea-Features_Img_S2_R1_Shallow_* polygon vector 
 # file that represents cay regions (low tide sandy area around a cay as it moves over time) 
 # and breaking wave areas. This raw conversion then needs manual correction to remove any extraneous 

@@ -4,6 +4,7 @@
 # This script clips the satellite derived depth estimates (CS_AIMS_Coral-Sea-Features_Img_S2_R1_Depth10m_Coral-Sea)
 # with the reef boundaries. This removes most of the noise from clouds. This will however not remove
 # cloud effects over reef areas.
+# This script is provided primarily for reference purposes of the processing used during a part of the processing.
 # This should be run with a Python environment that has GDAL installed.
 # On Windows use OSGeo4W commandline.
 

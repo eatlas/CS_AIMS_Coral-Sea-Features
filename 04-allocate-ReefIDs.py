@@ -1,4 +1,5 @@
 """
+This is a generic script for applying ReefIDs to shapefiles. Below is the calls used for the allocation of IDs to the Reefs-Cays and Atoll-Platforms shapefiles. 
 python 02-allocate-ReefIDs.py --base B10 ../working/CS_AIMS_Coral-Sea-Features_2024_Reefs-cays.shp ../out-data/Reefs-Cays/CS_AIMS_Coral-Sea-Features_2024_Reefs-cays.shp R
 python 02-allocate-ReefIDs.py --base B10 ../working/CS_AIMS_Coral-Sea-Features_2024_Atoll-platforms.shp ../out-data/Atoll-Platforms/CS_AIMS_Coral-Sea-Features_2024_Atoll-platforms.shp A 2
 
