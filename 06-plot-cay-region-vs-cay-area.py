@@ -27,10 +27,12 @@ import sys
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import numpy as np
+from version import VERSION
+
+output_fig_folder = f"data/{VERSION}/figures/06"
+fp = f"data/{VERSION}/Reefs-Cays/CS_AIMS_Coral-Sea-Features_2025_Reefs-cays.shp"
 
 def main():
-    # Define input file path
-    fp = "working/CS_AIMS_Coral-Sea-Features_2025_Reefs-cays.shp"
     
     # Load the Reef-Cays shapefile
     print("Loading Reef-Cays shapefile...")
@@ -55,7 +57,7 @@ def main():
     gdf["fraction"] = gdf.apply(lambda row: row["AvArea_km2"] / row["Area_km2"] if row["Area_km2"] != 0 else np.nan, axis=1)
     
     # Create the output folder for figures if it does not exist
-    output_fig_folder = "data/figures"
+    
     if not os.path.exists(output_fig_folder):
         print(f"Creating output folder for figures: {output_fig_folder}")
         os.makedirs(output_fig_folder, exist_ok=True)

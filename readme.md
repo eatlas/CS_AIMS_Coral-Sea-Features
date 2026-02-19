@@ -32,7 +32,7 @@ Conda is recommended because, in theory, it makes the installing of GDAL, PROJ a
     conda activate venv_map_3-13
     ```
     
-## Debug:
+### Debug:
 ERROR conda.core.link:_execute(938): An error occurred while installing package 'conda-forge::libjpeg-turbo-3.0.0-hcfcfb64_1'.
 Rolling back transaction: done
 
@@ -44,6 +44,38 @@ For some reason this particular cache of the library was set with administrator 
 I found that when this failure occurs the resulting conda environment ends up in a corrupted state and it must be manually removed, prior to recreating the environment.
 
 In my case I needed to delete `C:\Users\elawrey\Anaconda3\envs\venv_map_3-13`
+
+## Moving the data download out of One Drive using a Symbolic link (Windows)
+
+The `CS_AIMS_Coral-Sea-Features` workflows expect input data to exist at: `CS_AIMS_Coral-Sea-Features/publish/data/v1-2/in-3p`
+
+In many setups this directory sits inside a OneDrive-synchronised folder.  
+Large downloaded datasets should **not** be stored directly in OneDrive, as this can trigger unwanted cloud synchronisation, storage usage, and slow performance.
+
+A recommended approach is to store downloaded data in a separate local location (e.g. another drive) and create a **directory symbolic link** so the scripts still find the data in the expected path.
+
+To store data locally: `D:\Data\CS_AIMS_Coral-Sea-Features\working` but make it appear to the project as: 
+`C:\Users\<username>\OneDrive - <organisation name>\Documents\CS_AIMS_Coral-Sea-Features\publish\data\v1-2\in-3p` we use a symbolic link redirects access transparently without duplicating files.
+
+Using a symbolic link keeps large datasets outside OneDrive, while avoids the need to modifying scripts. For this we use a symbolic link, rather than a junction because using a junction will cause OneDrive to sync the linked content.
+
+1. Open a command prompt with administrator privledges.
+Click Start, type `cmd`, select Run as administrator. You’ll get the UAC prompt.
+2. Using a windows command prompt make sure up are in the data folder of the project
+```
+cd <path to project>\CS_AIMS_Coral-Sea-Features\publish\data\v1-2
+```
+3. Create the symbolic link to work the data is stored. You probably need to ensure this folder exists first (untested)
+```
+mklink /D "in-3p" "D:\Data\CS_AIMS_Coral-Sea-Features\working"
+```
+
+If you can't setup a symbolic link and still want to store the data in a separate folder then you can simple editing the paths in scripts and the paths in the QGIS preview-maps.qgz.
+
+### Removing the link
+
+Deleting the link does **not** delete the data: `rmdir in-3p`. Only the symbolic link is removed.
+
 
 # Description of scripts
 
@@ -73,5 +105,8 @@ For the reef mapping base 10 (B10) was used to encode the ReefID as it was found
 This script calculates the average area of the cays. This is to estimate how much smaller the cays are compared with the cay region in Reefs-Cays. This uses spatial joining to work out which cays in Cays-over-time correspond to each cay in Reefs-Cays. It assigns them the matching ReefID and Area_km2. The average cay area is then calculated over each date and ReefID, then copied back to Reefs-Cays. This creates an updated version of the Reefs-Cays and Cays-over-time in working. These should be manually copied to the publication folder once they have been checked.
 
 ## 06-plot-cay-region-vs-cay-area.py
-This script plots how the average cay area varies as a function of the cay stability and whether it is vegetated.  
+This script plots how the average cay area varies as a function of the cay stability and whether it is vegetated.
+
+## 07-sat-depth-class-vs-aho.py
+This script calibrates the satellite-derived reef depth classes against depths recorded in Australian Hydrographic Office (AHO) marine charts. The satellite imagery distinguishes three reef classes based on spectral detectability: very-shallow reefs (visible in a contrast-enhanced red band, flagged as `V_SHALLOW`), deep (mesophotic) reefs (visible in a contrast-enhanced green band, encoded as `NVCL_Eco = "Oceanic mesophotic coral reefs"`), and shallow reefs (the remaining class). The script sweeps candidate depth thresholds for the very-shallow and deep classes, computing one-vs-rest F1 scores at each threshold against the AHO charted depths to help identify the depth boundaries that best align with the satellite classifications. A final 3×3 confusion matrix is then produced at analyst-chosen thresholds. The script also performs an AHO self-consistency sensitivity test, which perturbs the charted depths according to the ZOC-B uncertainty model (±0.5 m at 95% CI plus 2% of depth combined in quadrature) across 1,000 Monte-Carlo repetitions to quantify how stable the depth-class labels are given the AHO's own measurement uncertainty — providing an upper bound on the accuracy that could be expected when comparing satellite classes against the chart depths. All outputs (sweep CSVs, confusion matrix, self-consistency results, and F1 plots) are written to `working/07/`.  
 

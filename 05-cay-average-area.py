@@ -19,10 +19,11 @@ Requirements:
 import os
 import sys
 import geopandas as gpd
+from version import VERSION
 
 # Define file paths (note the updated path for Reef-Cays)
-reefs_cays_fp = "data/Reefs-Cays/CS_AIMS_Coral-Sea-Features_2025_Reefs-cays.shp"
-cays_over_time_fp = "data/extra/Cays-over-time/CS_AIMS_Coral-Sea-Features_2025_Cays-over-time_2014-2023.shp"
+reefs_cays_fp = f"data/{VERSION}/Reefs-Cays/CS_AIMS_Coral-Sea-Features_2025_Reefs-cays.shp"
+cays_over_time_fp = f"data/{VERSION}/extra/Cays-over-time/CS_AIMS_Coral-Sea-Features_2025_Cays-over-time_2014-2023.shp"
 
 # Define EPSG codes
 source_crs = "EPSG:4326"

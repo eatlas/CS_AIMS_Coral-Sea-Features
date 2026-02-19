@@ -7,8 +7,9 @@ import os
 #import glob
 
 # Create an instance of the DataDownloader class
-# We have placed the downloads in a separate area so they are not backed up by OneDrive
-downloader = DataDownloader(download_path="C:\\Data\\2025\\CS_AIMS_Coral-Sea-Features\\working")
+# This downloads to a subfolder of the project. If you want to store the data elsewhere
+# change the path here or setup a symbolic link, see readme.md for details.
+downloader = DataDownloader(download_path="data/v1-2/in-3p")
 
 print("Downloading source data files. This will take a while ...")
 
