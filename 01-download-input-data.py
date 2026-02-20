@@ -1,6 +1,7 @@
 from data_downloader import DataDownloader
 from pyproj import CRS
 import os
+from version import VERSION
 
 # For creation of virtual rasters
 #from osgeo import gdal
@@ -9,7 +10,7 @@ import os
 # Create an instance of the DataDownloader class
 # This downloads to a subfolder of the project. If you want to store the data elsewhere
 # change the path here or setup a symbolic link, see readme.md for details.
-downloader = DataDownloader(download_path="data/v1-2/in-3p")
+downloader = DataDownloader(download_path=f"data/{VERSION}/in-3p")
 
 print("Downloading source data files. This will take a while ...")
 
